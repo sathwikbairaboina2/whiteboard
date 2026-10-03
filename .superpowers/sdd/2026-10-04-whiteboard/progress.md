@@ -26,3 +26,4 @@ Task 17: complete (typecheck exit 0; vitest lint -> 3 passed; no unit test by pl
 Task 18: complete (tests: pnpm test -> 17 files 54 passed; pnpm build ok; screenshots 1280x800 and 375x812 checked, drew rect -> data-shapes 1, no console errors; fixed toolbar wrap at 375px)
 Task 19: complete (tests: pnpm test -> 54 passed; pnpm build ok, precache 12 entries, dist/sw.js and dist/manifest.webmanifest exist)
 Task 20: complete (tests: pnpm e2e -> 3 passed (draw x2, pwa); ports 5412/5415 free afterwards)
+Task 21: complete (tests: pnpm e2e -> 5 passed (draw x2, pwa, sync, offline); 3 consecutive runs 5/5, 5/5, 5/5)
