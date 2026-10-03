@@ -10,3 +10,4 @@ Task 1: complete (tests: pnpm test -> 1 passed; typecheck exit 0; vite build ok)
 Task 2: complete (tests: pnpm exec vitest run tests/schema.test.ts -> 2 passed; typecheck exit 0)
 Task 3: complete (tests: vitest tests/commands.test.ts -> 9 passed; typecheck exit 0)
 Task 4: complete (tests: vitest commands.property -> 2 passed; mutation maxPointPairs*4 failed with counterexample [4001,0], reverted)
+Task 5: complete (tests: vitest lint -> 3 passed; adding transact to board.ts failed naming src/doc/board.ts, reverted). Note: Task 4/5 test files were committed together with Task 3
