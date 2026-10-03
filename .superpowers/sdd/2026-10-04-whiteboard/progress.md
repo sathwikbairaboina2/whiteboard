@@ -20,3 +20,4 @@ Task 11: complete (tests: vitest signaling -> 4 passed; real run: PORT=5411 node
 Task 12: complete (tests: vitest render -> 3 passed; typecheck exit 0)
 Task 13: complete (tests: vitest scene -> 5 passed; typecheck exit 0)
 Task 14: complete (tests: vitest store -> 1 passed, lint 3 passed)
+Task 15: complete (tests: vitest app -> 4 passed; typecheck exit 0)
