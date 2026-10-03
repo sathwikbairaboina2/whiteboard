@@ -18,3 +18,4 @@ Task 9: complete (tests: vitest room+persistence -> 6 passed, lint 3 passed; typ
 Task 10: complete (tests: vitest sync -> 1 passed; typecheck exit 0)
 Task 11: complete (tests: vitest signaling -> 4 passed; real run: PORT=5411 node server/signaling.ts printed 'signaling listening on 5411', curl -> okay, stopped)
 Task 12: complete (tests: vitest render -> 3 passed; typecheck exit 0)
+Task 13: complete (tests: vitest scene -> 5 passed; typecheck exit 0)
