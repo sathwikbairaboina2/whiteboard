@@ -24,7 +24,7 @@ All numbers come from `bench/results.json`, written by `pnpm bench`. Machine: AM
 | Metric | Value |
 |---|---|
 | Pan, 10,000 shapes, paint p50 / p95 | 1.8 ms / 3.2 ms |
-| Pan, 10,000 shapes, frame interval p50 / p95 | 16.7 ms / 16.8 ms |
+| Pan, 10,000 shapes, frame interval p50 / p95 | 16.7 ms / 16.7 ms |
 | Whole board in view (zoom 0.16), paint p50 / p95 | 8.1 ms / 13.6 ms |
 | Whole board in view, frame interval p50 / p95 | 33.3 ms / 33.4 ms |
 | Peer latency, 50 edits across two browser contexts, p50 / p95 | 2.9 ms / 29.3 ms |

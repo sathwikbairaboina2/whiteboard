@@ -40,3 +40,5 @@ Review fix: nginx serves /manifest.webmanifest as application/manifest+json (cur
 Review fix: signaling unsubscribe deletes empty topics; test checks topicCount via new SignalingServer.topicCount()
 Review fix: README line 1 now carries "(Ryzen 9 7900X, Chromium 153)"; README/DEVDOCS/handoff numbers refreshed from the new bench/results.json (pan10k p95 3.2 ms)
 Review fix gates: typecheck 0; pnpm test 19 files 60 passed 0 skipped; pnpm build 0 + sw.js + manifest; pnpm e2e 7 passed; pnpm bench HEADLINE 3.2 ms (fit10k p95 13.6, peer p50 2.9, convergence true); docker 200/okay/down clean, manifest content-type ok; actionlint 0
+
+- Step 5 (Opus): verified both review fixes; gates green (typecheck, 60 unit, build, 7 e2e, docker smoke). DEVDOCS rewritten. Status: verified.
