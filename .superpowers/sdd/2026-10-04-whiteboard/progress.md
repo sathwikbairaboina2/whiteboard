@@ -7,3 +7,4 @@ Format: one line per task, `Task N: complete (tests: <command> -> <real count> p
 
 Task 0 (plan, Opus): complete (spec, ADRs 0001-0008, plan with 25 tasks; plan code prototyped in scratch: vitest 17 files / 54 tests passed, tsc 7.0.2 clean; browser prototypes: y-webrtc two-context sync, SW offline reload, CDP installability [] all passed)
 Task 1: complete (tests: pnpm test -> 1 passed; typecheck exit 0; vite build ok)
+Task 2: complete (tests: pnpm exec vitest run tests/schema.test.ts -> 2 passed; typecheck exit 0)
