@@ -9,3 +9,4 @@ Task 0 (plan, Opus): complete (spec, ADRs 0001-0008, plan with 25 tasks; plan co
 Task 1: complete (tests: pnpm test -> 1 passed; typecheck exit 0; vite build ok)
 Task 2: complete (tests: pnpm exec vitest run tests/schema.test.ts -> 2 passed; typecheck exit 0)
 Task 3: complete (tests: vitest tests/commands.test.ts -> 9 passed; typecheck exit 0)
+Task 4: complete (tests: vitest commands.property -> 2 passed; mutation maxPointPairs*4 failed with counterexample [4001,0], reverted)
