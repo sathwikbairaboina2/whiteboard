@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-03T22:50:19.134Z",
+  "date": "2026-10-03T22:57:06.685Z",
   "machine": {
     "cpu": "AMD Ryzen 9 7900X 12-Core Processor",
     "cores": 24,
@@ -9,12 +9,12 @@
   },
   "node": {
     "moveUpdateBytes": 43,
-    "addRectUpdateBytes": 278,
-    "docBytes10k": 4942516,
+    "addRectUpdateBytes": 279,
+    "docBytes10k": 4932516,
     "convergence": {
       "peers": 3,
       "opsPerPeer": 1000,
-      "ms": 10242,
+      "ms": 37237,
       "converged": true
     }
   },
@@ -24,8 +24,8 @@
       "shapes": 10000,
       "frames": 300,
       "zoom": 1,
-      "paintP50Ms": 1.1,
-      "paintP95Ms": 1.5,
+      "paintP50Ms": 2.3,
+      "paintP95Ms": 5.3,
       "frameP50Ms": 16.7,
       "frameP95Ms": 16.8,
       "drawnAvg": 165.16
@@ -34,16 +34,16 @@
       "shapes": 10000,
       "frames": 300,
       "zoom": 0.16,
-      "paintP50Ms": 4.8,
-      "paintP95Ms": 7,
-      "frameP50Ms": 16.7,
-      "frameP95Ms": 33.3,
+      "paintP50Ms": 11.6,
+      "paintP95Ms": 21.7,
+      "frameP50Ms": 33.3,
+      "frameP95Ms": 50.1,
       "drawnAvg": 4799.52
     },
     "peerLatency": {
       "edits": 50,
-      "p50Ms": 0.8,
-      "p95Ms": 1.3
+      "p50Ms": 3,
+      "p95Ms": 19.6
     }
   }
 }

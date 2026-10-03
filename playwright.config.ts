@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: 'e2e',
   timeout: 60_000,
   workers: 1,
-  grepInvert: /@demo/,
+  // The demo recording is skipped unless asked for with --grep @demo (pnpm demo).
+  grepInvert: process.argv.includes('@demo') ? undefined : /@demo/,
   use: { baseURL: 'http://localhost:5412', trace: 'retain-on-failure' },
   webServer: [
     { command: 'pnpm exec vite build && pnpm exec vite preview --port 5412 --strictPort', url: 'http://localhost:5412', timeout: 180_000, reuseExistingServer: false },
