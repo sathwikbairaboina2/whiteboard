@@ -16,3 +16,4 @@ Task 7: complete (tests: vitest convergence.property -> 1 passed, seed 42, 100 r
 Task 8: complete (tests: vitest undo -> 2 passed; typecheck exit 0)
 Task 9: complete (tests: vitest room+persistence -> 6 passed, lint 3 passed; typecheck exit 0)
 Task 10: complete (tests: vitest sync -> 1 passed; typecheck exit 0)
+Task 11: complete (tests: vitest signaling -> 4 passed; real run: PORT=5411 node server/signaling.ts printed 'signaling listening on 5411', curl -> okay, stopped)
