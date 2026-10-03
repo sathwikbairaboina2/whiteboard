@@ -1,0 +1,10 @@
+node_modules
+dist
+dev-dist
+coverage
+test-results
+playwright-report
+bench/results/
+*.log
+.env*
+!.env*.example
