@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Session } from '../app/session'
+import { useInstallPrompt } from './useInstallPrompt'
 import { useOnline } from './useOnline'
 
 function usePeers(session: Session): number {
@@ -16,6 +17,7 @@ const peerLabel = (n: number): string => (n === 0 ? 'Only you' : n === 1 ? '1 pe
 export function TopBar({ session, roomId }: { session: Session; roomId: string }) {
   const peers = usePeers(session)
   const online = useOnline()
+  const { canInstall, install } = useInstallPrompt()
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
@@ -38,6 +40,11 @@ export function TopBar({ session, roomId }: { session: Session; roomId: string }
       <button type="button" className="btn" data-testid="copy-link" onClick={copy}>
         {copied ? 'Copied' : 'Copy link'}
       </button>
+      {canInstall && (
+        <button type="button" className="btn" data-testid="install" onClick={install}>
+          Install
+        </button>
+      )}
     </header>
   )
 }

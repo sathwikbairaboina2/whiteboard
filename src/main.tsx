@@ -7,6 +7,9 @@ import { createRoomLink, formatRoomHash } from './crdt-core'
 import { readConfig } from './app/config'
 import { Session } from './app/session'
 import { App } from './ui/App'
+import { registerSW } from 'virtual:pwa-register'
+
+registerSW({ immediate: true })
 
 const config = readConfig(window.location, import.meta.env)
 let room = config.room
