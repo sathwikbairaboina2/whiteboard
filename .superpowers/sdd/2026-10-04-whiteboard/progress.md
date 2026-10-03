@@ -32,3 +32,11 @@ Task 22: complete (tests: pnpm test -> 18 files 56 passed; pnpm bench -> HEADLIN
 Task 23: complete (docker compose up -d --build -> whiteboard-app and whiteboard-signaling started; curl :5413 -> 200; curl :5414 -> okay; docker compose down -> no whiteboard-* container left)
 Task 24: complete (actionlint 1.7.12 via docker (MSYS_NO_PATHCONV=1 needed under Git Bash) -> exit 0, no output)
 Task 25: complete (pnpm demo -> docs/media/demo.gif 0.63 MB, frame checked; gates: typecheck 0; pnpm test 18 files 56 passed; pnpm build 0 + sw.js + manifest; pnpm e2e 5 passed; pnpm bench HEADLINE 5.3 ms p95 (final run, shared machine; fit10k paint p95 21.7 ms over budget; peerLatency p50 3 p95 19.6; convergence 37237 ms converged true); docker 200/okay/down clean; actionlint 0)
+Review fix: demo and merge - added debug hook (?debug=1 or ?hook=1 exposes window.__session.disconnect/reconnect, backed by provider.disconnect/connect); e2e/merge.spec.ts proves offline edits on both sides merge to 3 shapes after reconnect; demo.spec.ts now uses the hook and asserts 4 shapes on A before 5/5 after reconnect; demo.gif re-recorded (0.61 MB)
+Review fix: last room - src/app/lastRoom.ts (localStorage whiteboard:lastRoom, try/catch), main.tsx uses chooseRoom; tests/lastRoom.test.ts (4 tests), e2e/lastroom.spec.ts; ADR 0005 updated
+Review fix: convergence ms removed from README table (boolean only) with a note that the time is harness backlog, not app latency; results.json still records ms
+Review fix: e2e ROOM() id now tag(4)+base36 time tail+random, no longer collides across runs
+Review fix: nginx serves /manifest.webmanifest as application/manifest+json (curl -I verified); .dockerignore excludes .env* except examples
+Review fix: signaling unsubscribe deletes empty topics; test checks topicCount via new SignalingServer.topicCount()
+Review fix: README line 1 now carries "(Ryzen 9 7900X, Chromium 153)"; README/DEVDOCS/handoff numbers refreshed from the new bench/results.json (pan10k p95 3.2 ms)
+Review fix gates: typecheck 0; pnpm test 19 files 60 passed 0 skipped; pnpm build 0 + sw.js + manifest; pnpm e2e 7 passed; pnpm bench HEADLINE 3.2 ms (fit10k p95 13.6, peer p50 2.9, convergence true); docker 200/okay/down clean, manifest content-type ok; actionlint 0

@@ -43,6 +43,15 @@ export class Session {
     return this.sync ? this.sync.onPeersChange(cb) : () => {}
   }
 
+  /** Cut the peer connection but keep editing locally. Used by the debug hook in e2e tests. */
+  disconnect(): void {
+    this.sync?.disconnect()
+  }
+
+  reconnect(): void {
+    this.sync?.connect()
+  }
+
   async destroy(): Promise<void> {
     this.sync?.destroy()
     await this.persistence?.destroy()

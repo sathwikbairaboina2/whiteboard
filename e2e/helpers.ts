@@ -1,13 +1,14 @@
 import { expect, type Page } from '@playwright/test'
 
 export const ROOM = (tag: string) => {
-  const id = (tag + 'xxxxxxxxxxxx').slice(0, 12).replace(/[^A-Za-z0-9_-]/g, 'x')
+  const tail = Date.now().toString(36).slice(-6) + Math.random().toString(36).slice(2, 4)
+  const id = (tag.slice(0, 4).replace(/[^A-Za-z0-9]/g, 'x') + tail).padEnd(12, 'x').slice(0, 12)
   return `#room=${id}&key=e2ekeye2ekeye2ekeye2ek`
 }
 export const QUERY = '?signaling=ws://localhost:5415&ice=none'
 
-export async function openBoard(page: Page, hash: string): Promise<void> {
-  await page.goto(`/${QUERY}${hash}`)
+export async function openBoard(page: Page, hash: string, extraQuery = ''): Promise<void> {
+  await page.goto(`/${QUERY}${extraQuery}${hash}`)
   await expect(page.getByTestId('board')).toBeVisible()
 }
 

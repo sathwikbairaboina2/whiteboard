@@ -51,11 +51,15 @@ describe('signaling server', () => {
   it('does not relay to other topics or after unsubscribe', async () => {
     const a = await client()
     const b = await client()
+    await settle()
+    const base = server.topicCount()
     b.ws.send(JSON.stringify({ type: 'subscribe', topics: ['t2'] }))
     await settle()
+    expect(server.topicCount()).toBe(base + 1)
     b.ws.send(JSON.stringify({ type: 'unsubscribe', topics: ['t2'] }))
     a.ws.send(JSON.stringify({ type: 'subscribe', topics: ['t3'] }))
     await settle()
+    expect(server.topicCount()).toBe(base + 1) // t2 removed, t3 added
     a.ws.send(JSON.stringify({ type: 'publish', topic: 't2', data: 'x' }))
     b.ws.send(JSON.stringify({ type: 'ping' }))
     expect(await b.next()).toEqual({ type: 'pong' })

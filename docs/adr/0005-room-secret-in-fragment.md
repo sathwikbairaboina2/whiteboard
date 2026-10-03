@@ -13,3 +13,4 @@ There are no accounts. Something must decide who can join a board.
 ## Consequences
 - What I gave up: anyone with the link has full write access. There is no read-only link and no revocation. To "revoke", start a new room.
 - What I gave up: the link is the secret, so pasting it in a public channel publishes the board.
+- Update: the last opened room (id and key) is also kept in this browser's `localStorage` (`whiteboard:lastRoom`), so opening `/` or launching the installed app returns to the previous board instead of a blank one. The key therefore also lives on the device in clear text, next to the IndexedDB copy of the board. Anyone with access to the browser profile can already read that board, so this adds no new exposure; clearing site data forgets it. If storage is blocked, a new room is created.

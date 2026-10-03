@@ -15,6 +15,8 @@ type Msg = { type?: unknown; topics?: unknown; topic?: unknown; [k: string]: unk
 
 export interface SignalingServer {
   port: number
+  /** Number of topics with at least one subscriber (for tests). */
+  topicCount(): number
   close(): Promise<void>
 }
 
@@ -65,7 +67,9 @@ export function startSignaling(port: number): Promise<SignalingServer> {
         case 'unsubscribe':
           for (const t of Array.isArray(msg.topics) ? msg.topics : []) {
             if (typeof t !== 'string') continue
-            topics.get(t)?.delete(conn)
+            const subs = topics.get(t)
+            subs?.delete(conn)
+            if (subs && subs.size === 0) topics.delete(t)
             mine.delete(t)
           }
           break
@@ -90,6 +94,7 @@ export function startSignaling(port: number): Promise<SignalingServer> {
       const addr = server.address()
       resolve({
         port: typeof addr === 'object' && addr ? addr.port : port,
+        topicCount: () => topics.size,
         close: () => new Promise<void>((done) => {
           wss.clients.forEach((c) => c.terminate())
           wss.close(() => server.close(() => done()))

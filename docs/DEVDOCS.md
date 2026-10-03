@@ -4,7 +4,7 @@
 
 An offline-first whiteboard. Shapes live in a Yjs CRDT. They sync peer to peer over WebRTC and persist to IndexedDB. No server holds your data.
 
-Headline number, measured by `pnpm bench` into `bench/results.json`: **5.3 ms p95 paint per frame panning 10,000 shapes** (Chromium 153.0.8010.12, AMD Ryzen 9 7900X, shared machine, 2026-10-03). Paint time is JavaScript plus Canvas2D submission, not GPU raster.
+Headline number, measured by `pnpm bench` into `bench/results.json`: **3.2 ms p95 paint per frame panning 10,000 shapes** (Chromium 153.0.8010.12, AMD Ryzen 9 7900X, shared machine, 2026-10-03). Paint time is JavaScript plus Canvas2D submission, not GPU raster.
 
 ## 2. Quickstart (5 minutes)
 
@@ -85,7 +85,7 @@ Local writes go through `commands.ts` only. Remote and stored data pass through 
 ## 7. Known limits and what's left
 
 - Not built: text, arrow and eraser tools, awareness cursors, `.wbjson` export and import, PNG export, dirty-rect painting, resize and rotate handles, an npm package for `crdt-core`, TURN or a relay, a public deploy.
-- Whole-board view of 10,000 shapes measured a paint p95 of 21.7 ms on the final bench run, above the 16.7 ms budget. Earlier runs of the pan benchmark were much lower, so the shared machine adds noise. Worth a lower-level look (batching by style, level of detail when zoomed out).
+- Whole-board view of 10,000 shapes measured a paint p95 of 13.6 ms on the final bench run, under the 16.7 ms budget with little headroom (21.7 ms on an earlier, busier run). The shared machine adds noise. Worth a lower-level look (batching by style, level of detail when zoomed out).
 - Peer latency is measured on one machine over loopback, so it says nothing about real networks.
 - The bundle is one large chunk (over 500 kB). Splitting it is untried.
 - The service worker uses `autoUpdate`, so a new deploy applies on the next load without a prompt.

@@ -1,4 +1,4 @@
-**5.3 ms p95 paint per frame panning 10,000 shapes, offline-first, and no server ever holds your data.**
+**3.2 ms p95 paint per frame panning 10,000 shapes (Ryzen 9 7900X, Chromium 153), offline-first, and no server ever holds your data.**
 
 # Whiteboard
 
@@ -19,21 +19,23 @@ pnpm e2e         # browser tests
 
 ## Measured
 
-All numbers come from `bench/results.json`, written by `pnpm bench`. Machine: AMD Ryzen 9 7900X 12-Core Processor, 24 cores, win32 10.0.26200, Node v24.18.0, Chromium 153.0.8010.12. Run on 2026-10-03T22:57:06Z. The machine was shared with other jobs, so numbers move between runs (an earlier run of the same benchmark gave a pan10k paint p95 of 1.5 ms; see the Task 22 line in the build ledger).
+All numbers come from `bench/results.json`, written by `pnpm bench`. Machine: AMD Ryzen 9 7900X 12-Core Processor, 24 cores, win32 10.0.26200, Node v24.18.0, Chromium 153.0.8010.12. Run on 2026-10-03T23:22:38Z. The machine was shared with other jobs, so numbers move between runs (earlier runs of the same benchmark gave a pan10k paint p95 between 1.5 and 5.3 ms; see the ledger).
 
 | Metric | Value |
 |---|---|
-| Pan, 10,000 shapes, paint p50 / p95 | 2.3 ms / 5.3 ms |
+| Pan, 10,000 shapes, paint p50 / p95 | 1.8 ms / 3.2 ms |
 | Pan, 10,000 shapes, frame interval p50 / p95 | 16.7 ms / 16.8 ms |
-| Whole board in view (zoom 0.16), paint p50 / p95 | 11.6 ms / 21.7 ms |
-| Whole board in view, frame interval p50 / p95 | 33.3 ms / 50.1 ms |
-| Peer latency, 50 edits across two browser contexts, p50 / p95 | 3 ms / 19.6 ms |
+| Whole board in view (zoom 0.16), paint p50 / p95 | 8.1 ms / 13.6 ms |
+| Whole board in view, frame interval p50 / p95 | 33.3 ms / 33.4 ms |
+| Peer latency, 50 edits across two browser contexts, p50 / p95 | 2.9 ms / 29.3 ms |
 | Update size, move one shape | 43 bytes |
-| Update size, add one rectangle | 279 bytes |
-| Encoded document, 10,000 shapes | 4,932,516 bytes |
-| Convergence, 3 peers x 1,000 random commands, shuffled delivery | converged, 37,237 ms |
+| Update size, add one rectangle | 278 bytes |
+| Encoded document, 10,000 shapes | 4,809,549 bytes |
+| Convergence, 3 peers x 1,000 random commands, shuffled delivery | converged (true) |
 
-Paint time covers JavaScript and Canvas2D command submission, not GPU raster (ADR 0004). With the whole 10,000-shape board in view the paint p95 is over the 16.7 ms frame budget on this run, so zoomed-out views of very large boards are the known weak spot.
+The convergence run takes about 38 s of harness time, not shown as a result: the harness delivers fewer updates per round than the peers produce, so roughly 1,500 out-of-order updates queue up and Yjs pending-struct merging dominates. That time is not app latency, and it varied from 10 s to 73 s across runs of the same code.
+
+Paint time covers JavaScript and Canvas2D command submission, not GPU raster (ADR 0004). With the whole 10,000-shape board in view the paint p95 is 13.6 ms on this run, under the 16.7 ms budget but with little headroom (an earlier run on a busier machine measured 21.7 ms), so zoomed-out views of very large boards are the known weak spot.
 
 ## How it works
 
@@ -49,8 +51,8 @@ See the decision records: [0001 y-webrtc, not y-websocket](docs/adr/0001-y-webrt
 
 ## Tests
 
-- `pnpm test`: 18 files, 56 tests passed, 0 skipped. Includes `commands.property` and `convergence.property` with fixed seed 42.
-- `pnpm e2e`: 5 tests passed (draw, undo and delete, PWA installability, two-context WebRTC sync, offline reload).
+- `pnpm test`: 19 files, 60 tests passed, 0 skipped. Includes `commands.property` and `convergence.property` with fixed seed 42.
+- `pnpm e2e`: 7 tests passed (draw, undo and delete, PWA installability, two-context WebRTC sync, offline reload, edits made while disconnected merging after reconnect, reopening `/` returns to the last board).
 
 ## License
 

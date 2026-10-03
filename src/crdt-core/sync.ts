@@ -14,6 +14,9 @@ export interface Sync {
   /** Remote peers with an open data channel, plus same-browser tabs. */
   peerCount(): number
   onPeersChange(cb: (count: number) => void): () => void
+  /** Drop every peer connection but keep the doc and IndexedDB. */
+  disconnect(): void
+  connect(): void
   destroy(): void
 }
 
@@ -45,6 +48,8 @@ export function connectRoom(doc: Y.Doc, opts: SyncOptions): Sync {
     provider,
     peerCount,
     onPeersChange(cb) { listeners.add(cb); return () => listeners.delete(cb) },
+    disconnect() { provider.disconnect(); check() },
+    connect() { provider.connect() },
     destroy() { clearInterval(timer); provider.destroy() },
   }
 }
