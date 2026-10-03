@@ -1,0 +1,32 @@
+:root {
+  --paper: #f6f5f1;
+  --ink: #1f1f1f;
+  --muted: #6b6b66;
+  --line: #e4e2db;
+  --surface: #ffffff;
+  --accent: #2f5bea;
+  --accent-ink: #ffffff;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --shadow: 0 1px 2px rgb(31 31 28 / 0.08), 0 4px 14px rgb(31 31 28 / 0.06);
+  --font: 'Geist Variable', system-ui, sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151513;
+    --ink: #ecebe6;
+    --muted: #9a9a93;
+    --line: #2c2c28;
+    --surface: #1e1e1b;
+    --accent: #6f90ff;
+    --accent-ink: #0d1020;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 14px rgb(0 0 0 / 0.3);
+  }
+}
