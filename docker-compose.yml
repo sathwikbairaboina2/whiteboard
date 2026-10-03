@@ -1,0 +1,16 @@
+name: whiteboard
+services:
+  app:
+    build:
+      context: .
+      target: app
+    container_name: whiteboard-app
+    ports:
+      - "5413:5413"
+  signaling:
+    build:
+      context: .
+      target: signaling
+    container_name: whiteboard-signaling
+    ports:
+      - "5414:5414"
