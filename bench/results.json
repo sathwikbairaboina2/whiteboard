@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-03T22:50:19.134Z",
+  "machine": {
+    "cpu": "AMD Ryzen 9 7900X 12-Core Processor",
+    "cores": 24,
+    "os": "win32 10.0.26200",
+    "node": "v24.18.0",
+    "chromium": "153.0.8010.12"
+  },
+  "node": {
+    "moveUpdateBytes": 43,
+    "addRectUpdateBytes": 278,
+    "docBytes10k": 4942516,
+    "convergence": {
+      "peers": 3,
+      "opsPerPeer": 1000,
+      "ms": 10242,
+      "converged": true
+    }
+  },
+  "browser": {
+    "chromium": "153.0.8010.12",
+    "pan10k": {
+      "shapes": 10000,
+      "frames": 300,
+      "zoom": 1,
+      "paintP50Ms": 1.1,
+      "paintP95Ms": 1.5,
+      "frameP50Ms": 16.7,
+      "frameP95Ms": 16.8,
+      "drawnAvg": 165.16
+    },
+    "fit10k": {
+      "shapes": 10000,
+      "frames": 300,
+      "zoom": 0.16,
+      "paintP50Ms": 4.8,
+      "paintP95Ms": 7,
+      "frameP50Ms": 16.7,
+      "frameP95Ms": 33.3,
+      "drawnAvg": 4799.52
+    },
+    "peerLatency": {
+      "edits": 50,
+      "p50Ms": 0.8,
+      "p95Ms": 1.3
+    }
+  }
+}

@@ -25,6 +25,7 @@ export default defineConfig({
       },
     }),
   ],
+  build: { rolldownOptions: { input: { main: 'index.html', bench: 'bench.html' } } },
   server: { port: 5410, strictPort: true },
   preview: { port: 5412, strictPort: true },
 })
