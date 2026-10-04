@@ -1,6 +1,15 @@
+# 🖍️ Whiteboard
+
+> Local-first whiteboard. Yjs CRDT, IndexedDB and WebRTC; edits made offline merge on reconnect.
+
 **3.2 ms p95 paint per frame panning 10,000 shapes (Ryzen 9 7900X, Chromium 153), offline-first, and no server ever holds your data.**
 
-# Whiteboard
+<!-- readme-header -->
+[![CI](https://github.com/sathwikbairaboina2/whiteboard/actions/workflows/ci.yml/badge.svg)](https://github.com/sathwikbairaboina2/whiteboard/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/license-MIT-blue) ![TypeScript](https://img.shields.io/badge/-TypeScript-555) ![Yjs](https://img.shields.io/badge/-Yjs-555) ![WebRTC](https://img.shields.io/badge/-WebRTC-555)
+
+| Measured | Source |
+|---|---|
+| **3.2 ms p95 paint, 10k shapes** | `bench/results.json` |
 
 ![Two boards in two browser contexts staying in sync](docs/media/demo.gif)
 
